@@ -146,26 +146,30 @@ local ScriptButton2 = ScriptsTab:CreateButton({
         loadstring(game:HttpGet("https://raw.githubusercontent.com/scriptshubzeck/Zeckhubv1/refs/heads/main/zeckhub"))()
     end
 })
--- יצירת Input ללא callback
-local AnnouncementInput = ScriptsTab:CreateInput({
-    Name = "Message Input",
-    CurrentValue = "",
-    PlaceholderText = "הקלד הודעה כאן",
-    RemoveTextAfterFocusLost = false,
-    Flag = "AnnouncementInput"
-})
-
--- כפתור לשליחת ההודעה
 local ScriptButton3 = ScriptsTab:CreateButton({
-    Name = "שלח הודעה",
+    Name = "Squid Game: Rebellion ITS JUST TROLLS",
     Callback = function()
-        local Text = AnnouncementInput:Get()  -- שליפת הטקסט שהוזן
-        if Text ~= "" then
-            local args = {Text}
-            game:GetService("ReplicatedStorage"):WaitForChild("SendAnnouncement"):FireServer(unpack(args))
-        else
-            print("ההודעה ריקה!")
-        end
+        -- יוצרים את ה-Input רק כשנלחץ הכפתור
+        local Input = ScriptsTab:CreateInput({
+            Name = "Enter your message",
+            CurrentValue = "",
+            PlaceholderText = "Type your message here",
+            RemoveTextAfterFocusLost = false,
+            Flag = "UserMessage",
+            Callback = function(Text)
+                -- כאן אפשר לשים הודעה שנשלחת אוטומטית כשמזינים טקסט (רצוי לא לשלוח אוטומטית)
+            end,
+        })
+
+        -- כפתור לשליחת ההודעה
+        local SendButton = ScriptsTab:CreateButton({
+            Name = "Send Message",
+            Callback = function()
+                local message = Input:Get() -- מקבלים את הטקסט מה-Input
+                local args = {message}
+                game:GetService("ReplicatedStorage"):WaitForChild("SendAnnouncement"):FireServer(unpack(args))
+            end
+        })
     end
 })
 
