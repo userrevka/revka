@@ -146,6 +146,18 @@ local ScriptButton2 = ScriptsTab:CreateButton({
         loadstring(game:HttpGet("https://raw.githubusercontent.com/scriptshubzeck/Zeckhubv1/refs/heads/main/zeckhub"))()
     end
 })
+local ScriptButton3 = ScriptsTab:CreateButton({
+    Name = "Squid Game: Reblion ITS JUST TROLLS",
+    Callback = function()
+        -- Made by pompomsaturin | https://scriptblox.com/u/PomPomSaturin | If you need support please join my discord server and ping me
+
+local args = {
+	"your message here" -- IT WILL NOT SEND TAGGED MESSAGES 
+}
+game:GetService("ReplicatedStorage"):WaitForChild("SendAnnouncement"):FireServer(unpack(args))
+
+    end
+})
 
 -- טעינת הגדרות
 Rayfield:LoadConfiguration()
