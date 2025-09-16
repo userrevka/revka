@@ -146,20 +146,29 @@ local ScriptButton2 = ScriptsTab:CreateButton({
         loadstring(game:HttpGet("https://raw.githubusercontent.com/scriptshubzeck/Zeckhubv1/refs/heads/main/zeckhub"))()
     end
 })
+-- יוצרים Input בשביל המשתמש להקליד הודעה
+local AnnouncementInput = ScriptsTab:CreateInput({
+    Name = "Message Input",
+    CurrentValue = "",
+    PlaceholderText = "הקלד הודעה כאן",
+    RemoveTextAfterFocusLost = false,
+    Flag = "AnnouncementInput",
+    Callback = function(Text)
+        -- אפשר להשאיר ריק, לא חובה פה
+    end,
+})
+
+-- הכפתור שולח את ההודעה מה-Input
 local ScriptButton3 = ScriptsTab:CreateButton({
     Name = "Squid Game: Reblion ITS JUST TROLLS",
     Callback = function()
-        Rayfield:CreateInput({
-            Name = "Enter your message",
-            PlaceholderText = "Type your message here",
-            SectionParent = ScriptsTab,
-            Callback = function(userMessage) -- <-- זה המקום שבו הערך נמצא
-                if userMessage and userMessage ~= "" then
-                    local args = {userMessage}
-                    game:GetService("ReplicatedStorage"):WaitForChild("SendAnnouncement"):FireServer(unpack(args))
-                end
-            end
-        })
+        local Text = AnnouncementInput:Get()  -- לוקח את הטקסט שהמשתמש כתב
+        if Text ~= "" then
+            local args = {Text}
+            game:GetService("ReplicatedStorage"):WaitForChild("SendAnnouncement"):FireServer(unpack(args))
+        else
+            print("ההודעה ריקה!")
+        end
     end
 })
 
