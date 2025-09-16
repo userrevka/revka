@@ -146,19 +146,6 @@ local ScriptButton2 = ScriptsTab:CreateButton({
         loadstring(game:HttpGet("https://raw.githubusercontent.com/scriptshubzeck/Zeckhubv1/refs/heads/main/zeckhub"))()
     end
 })
--- יוצרים את ה-Input מראש אבל מוסיפים אותו מוסתר
-local Input = ScriptsTab:CreateInput({
-    Name = "Enter your message",
-    CurrentValue = "",
-    PlaceholderText = "Type your message here",
-    RemoveTextAfterFocusLost = false,
-    Flag = "UserMessage",
-    Callback = function(Text)
-        -- אפשר להשאיר ריק או לעדכן משהו
-    end,
-})
-Input:Set("") -- נקודת התחלה ריקה
-
 -- יוצרים כפתור להפעלת השליחה
 local ScriptButton3 = ScriptsTab:CreateButton({
     Name = "Show Input",
@@ -167,15 +154,17 @@ local ScriptButton3 = ScriptsTab:CreateButton({
         -- ב-Rayfield אי אפשר באמת "להוסיף Input דינמית"
     end
 })
-
--- כפתור לשליחת ההודעה
-local SendButton = ScriptsTab:CreateButton({
-    Name = "Send Message",
-    Callback = function()
-        local message = Input:Get()
-        local args = {message}
-        game:GetService("ReplicatedStorage"):WaitForChild("SendAnnouncement"):FireServer(unpack(args))
-    end
+local Dropdown = Tab:CreateDropdown({
+    Name = "בחר הודעה",
+    Options = {"Hello", "Goodbye", "ITS JUST TROLLS"},
+    CurrentOption = {"Hello"},
+    MultipleOptions = false,
+    Flag = "MessageDropdown",
+    Callback = function(selected)
+        print("המשתמש בחר: "..selected[1])
+        -- כאן אפשר להפעיל את הסקריפט עם ההודעה שנבחרה
+        game:GetService("ReplicatedStorage"):WaitForChild("SendAnnouncement"):FireServer(selected[1])
+    end,
 })
 
 -- טעינת הגדרות
