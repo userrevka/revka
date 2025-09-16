@@ -149,13 +149,16 @@ local ScriptButton2 = ScriptsTab:CreateButton({
 local ScriptButton3 = ScriptsTab:CreateButton({
     Name = "Squid Game: Reblion ITS JUST TROLLS",
     Callback = function()
-        -- Made by pompomsaturin | https://scriptblox.com/u/PomPomSaturin | If you need support please join my discord server and ping me
+        local userMessage = Rayfield:CreateInput({
+            Name = "Enter your message",
+            PlaceholderText = "Type your message here",
+            SectionParent = ScriptsTab
+        })
 
-local args = {
-	"your message here" -- IT WILL NOT SEND TAGGED MESSAGES 
-}
-game:GetService("ReplicatedStorage"):WaitForChild("SendAnnouncement"):FireServer(unpack(args))
-
+        if userMessage and userMessage ~= "" then
+            local args = {userMessage}
+            game:GetService("ReplicatedStorage"):WaitForChild("SendAnnouncement"):FireServer(unpack(args))
+        end
     end
 })
 
