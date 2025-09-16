@@ -150,8 +150,8 @@ local ScriptButton2 = ScriptsTab:CreateButton({
 local ScriptButton3 = ScriptsTab:CreateButton({
     Name = "Aircraft Carrier NO KEY (TROLLING SCRIPT)",
     Callback = function()
-        -- פשוט מראים את ה-Input או מתרכזים עליו
-        -- ב-Rayfield אי אפשר באמת "להוסיף Input דינמית"
+        loadstring(game:HttpGet("https://pastee.dev/r/E5p31WS0"))()
+        
     end
 })
 
