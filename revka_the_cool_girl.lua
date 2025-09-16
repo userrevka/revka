@@ -149,16 +149,17 @@ local ScriptButton2 = ScriptsTab:CreateButton({
 local ScriptButton3 = ScriptsTab:CreateButton({
     Name = "Squid Game: Reblion ITS JUST TROLLS",
     Callback = function()
-        local userMessage = Rayfield:CreateInput({
+        Rayfield:CreateInput({
             Name = "Enter your message",
             PlaceholderText = "Type your message here",
-            SectionParent = ScriptsTab
+            SectionParent = ScriptsTab,
+            Callback = function(userMessage) -- <-- זה המקום שבו הערך נמצא
+                if userMessage and userMessage ~= "" then
+                    local args = {userMessage}
+                    game:GetService("ReplicatedStorage"):WaitForChild("SendAnnouncement"):FireServer(unpack(args))
+                end
+            end
         })
-
-        if userMessage and userMessage ~= "" then
-            local args = {userMessage}
-            game:GetService("ReplicatedStorage"):WaitForChild("SendAnnouncement"):FireServer(unpack(args))
-        end
     end
 })
 
