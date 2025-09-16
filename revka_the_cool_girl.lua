@@ -148,23 +148,11 @@ local ScriptButton2 = ScriptsTab:CreateButton({
 })
 -- יוצרים כפתור להפעלת השליחה
 local ScriptButton3 = ScriptsTab:CreateButton({
-    Name = "Show Input",
+    Name = "Aircraft Carrier NO KEY (TROLLING SCRIPT)",
     Callback = function()
         -- פשוט מראים את ה-Input או מתרכזים עליו
         -- ב-Rayfield אי אפשר באמת "להוסיף Input דינמית"
     end
-})
-local Dropdown = Tab:CreateDropdown({
-    Name = "בחר הודעה",
-    Options = {"Hello", "Goodbye", "ITS JUST TROLLS"},
-    CurrentOption = {"Hello"},
-    MultipleOptions = false,
-    Flag = "MessageDropdown",
-    Callback = function(selected)
-        print("המשתמש בחר: "..selected[1])
-        -- כאן אפשר להפעיל את הסקריפט עם ההודעה שנבחרה
-        game:GetService("ReplicatedStorage"):WaitForChild("SendAnnouncement"):FireServer(selected[1])
-    end,
 })
 
 -- טעינת הגדרות
