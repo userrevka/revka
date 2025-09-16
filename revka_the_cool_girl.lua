@@ -150,7 +150,10 @@ local ScriptButton2 = ScriptsTab:CreateButton({
 local ScriptButton3 = ScriptsTab:CreateButton({
     Name = "Aircraft Carrier NO KEY (TROLLING SCRIPT)",
     Callback = function()
-        loadstring(game:HttpGet("https://pastee.dev/r/E5p31WS0"))()
+        --[[
+	WARNING: Heads up! This script has not been verified by ScriptBlox. Use at your own risk!
+]]
+loadstring(game:HttpGet("https://pastebin.com/raw/2FCQ0zFu"))()
         
     end
 })
