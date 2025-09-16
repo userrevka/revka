@@ -141,9 +141,9 @@ local ScriptButton1 = ScriptsTab:CreateButton({
 })
 
 local ScriptButton2 = ScriptsTab:CreateButton({
-    Name = "Example Script 2",
+    Name = "Volleyball Legends NO KEY",
     Callback = function()
-        print("Script 2 executed!")
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/scriptshubzeck/Zeckhubv1/refs/heads/main/zeckhub"))()
     end
 })
 
