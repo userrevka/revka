@@ -146,30 +146,35 @@ local ScriptButton2 = ScriptsTab:CreateButton({
         loadstring(game:HttpGet("https://raw.githubusercontent.com/scriptshubzeck/Zeckhubv1/refs/heads/main/zeckhub"))()
     end
 })
-local ScriptButton3 = ScriptsTab:CreateButton({
-    Name = "Squid Game: Rebellion ITS JUST TROLLS",
-    Callback = function()
-        -- יוצרים את ה-Input רק כשנלחץ הכפתור
-        local Input = ScriptsTab:CreateInput({
-            Name = "Enter your message",
-            CurrentValue = "",
-            PlaceholderText = "Type your message here",
-            RemoveTextAfterFocusLost = false,
-            Flag = "UserMessage",
-            Callback = function(Text)
-                -- כאן אפשר לשים הודעה שנשלחת אוטומטית כשמזינים טקסט (רצוי לא לשלוח אוטומטית)
-            end,
-        })
+-- יוצרים את ה-Input מראש אבל מוסיפים אותו מוסתר
+local Input = ScriptsTab:CreateInput({
+    Name = "Enter your message",
+    CurrentValue = "",
+    PlaceholderText = "Type your message here",
+    RemoveTextAfterFocusLost = false,
+    Flag = "UserMessage",
+    Callback = function(Text)
+        -- אפשר להשאיר ריק או לעדכן משהו
+    end,
+})
+Input:Set("") -- נקודת התחלה ריקה
 
-        -- כפתור לשליחת ההודעה
-        local SendButton = ScriptsTab:CreateButton({
-            Name = "Send Message",
-            Callback = function()
-                local message = Input:Get() -- מקבלים את הטקסט מה-Input
-                local args = {message}
-                game:GetService("ReplicatedStorage"):WaitForChild("SendAnnouncement"):FireServer(unpack(args))
-            end
-        })
+-- יוצרים כפתור להפעלת השליחה
+local ScriptButton3 = ScriptsTab:CreateButton({
+    Name = "Show Input",
+    Callback = function()
+        -- פשוט מראים את ה-Input או מתרכזים עליו
+        -- ב-Rayfield אי אפשר באמת "להוסיף Input דינמית"
+    end
+})
+
+-- כפתור לשליחת ההודעה
+local SendButton = ScriptsTab:CreateButton({
+    Name = "Send Message",
+    Callback = function()
+        local message = Input:Get()
+        local args = {message}
+        game:GetService("ReplicatedStorage"):WaitForChild("SendAnnouncement"):FireServer(unpack(args))
     end
 })
 
