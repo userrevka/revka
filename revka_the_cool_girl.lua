@@ -146,15 +146,10 @@ local ScriptButton2 = ScriptsTab:CreateButton({
         loadstring(game:HttpGet("https://raw.githubusercontent.com/scriptshubzeck/Zeckhubv1/refs/heads/main/zeckhub"))()
     end
 })
--- יוצרים כפתור להפעלת השליחה
-local ScriptButton3 = ScriptsTab:CreateButton({
-    Name = "Aircraft Carrier NO KEY (TROLLING SCRIPT)",
+local ScriptButton2 = ScriptsTab:CreateButton({
+    Name = "Aircraft Carrier (TROLLS)",
     Callback = function()
-        --[[
-	WARNING: Heads up! This script has not been verified by ScriptBlox. Use at your own risk!
-]]
-loadstring(game:HttpGet("https://pastebin.com/raw/2FCQ0zFu"))()
-        
+        loadstring(game:HttpGet("https://pastebin.com/raw/2FCQ0zFu"))()
     end
 })
 
