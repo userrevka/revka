@@ -146,25 +146,24 @@ local ScriptButton2 = ScriptsTab:CreateButton({
         loadstring(game:HttpGet("https://raw.githubusercontent.com/scriptshubzeck/Zeckhubv1/refs/heads/main/zeckhub"))()
     end
 })
+-- יצירת Input מחוץ ל־callback של הכפתור
+local AnnouncementInput = ScriptsTab:CreateInput({
+    Name = "Message Input",
+    CurrentValue = "",
+    PlaceholderText = "הקלד הודעה כאן",
+    RemoveTextAfterFocusLost = false,
+    Flag = "AnnouncementInput",
+    Callback = function(Text)
+        -- ניתן להשאיר ריק או להשתמש אם רוצים פעולה אוטומטית כשמשתמש מקליד
+    end,
+})
+
+-- כפתור שמציג את ה־Input
 local ScriptButton3 = ScriptsTab:CreateButton({
     Name = "Squid Game: Reblion ITS JUST TROLLS",
     Callback = function()
-        -- יוצרים Input בזמן לחיצה על הכפתור
-        local AnnouncementInput = ScriptsTab:CreateInput({
-            Name = "Message Input",
-            CurrentValue = "",
-            PlaceholderText = "הקלד הודעה כאן",
-            RemoveTextAfterFocusLost = false,
-            Flag = "AnnouncementInput",
-            Callback = function(Text)
-                if Text ~= "" then
-                    local args = {Text}
-                    game:GetService("ReplicatedStorage"):WaitForChild("SendAnnouncement"):FireServer(unpack(args))
-                else
-                    print("ההודעה ריקה!")
-                end
-            end,
-        })
+        -- הצגת ה־Input לאחר לחיצה על הכפתור
+        AnnouncementInput:SetVisibility(true)
     end
 })
 
